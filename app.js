@@ -1,6 +1,6 @@
 const express = require('express');
 const { sequelize } = require('./models/');
-const { user } = require('./models/');
+const { user, post } = require('./models/');
 const app = express();
 app.use(express.json());
 
@@ -17,15 +17,17 @@ app.post('/api/user', async (req, res) => {
 	}
 });
 
-// Delete a users account
+// Delete a users account and all posts
 // DELETE (delete) /api/user/:username
 app.delete('/api/user/:username', async (req, res) => {
 	try {
-		const User = await user.findOne({
+		await user.destroy({
 			where: { username: req.params.username },
 		});
-		User.destroy();
-		return res.json(User);
+		await post.destroy({
+			where: { username: req.params.username },
+		});
+		return res.status(200).end();
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json(error);
@@ -40,13 +42,40 @@ app.delete('/api/user/:username', async (req, res) => {
 
 // Create a post for that user
 // POST (create) /api/user/:username/post/
-
+app.post('/api/user/:username/post', async (req, res) => {
+	const {
+		title,
+		date,
+		start_location,
+		end_location,
+		directions,
+		difficulty,
+		description,
+		image_url,
+	} = req.body;
+	try {
+		const Post = await post.create({
+			username: req.params.username,
+			title,
+			date,
+			start_location,
+			end_location,
+			directions,
+			difficulty,
+			description,
+			image_url,
+		});
+		return res.json(Post);
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
+	}
+});
 // Update a users post
 // PATCH (update) /api/user/:username/post/:id
 
 // Delete a users post
 // DELETE (delete) /api/users/:username/post/:id
-
 
 app.listen({ port: 9000 }, async () => {
 	console.log('Server running on local host 9000');

@@ -8,6 +8,10 @@ module.exports = {
 				primaryKey: true,
 				type: DataTypes.INTEGER,
 			},
+			username: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
 			title: {
 				type: DataTypes.STRING,
 				allowNull: false,
