@@ -4,7 +4,8 @@ const { user } = require('./models/user');
 const app = express();
 app.use(express.json());
 
-app.post('/users', async (req, res) => {
+// create new users
+app.post('/api/users', async (req, res) => {
 	const { name, email, username, password } = req.body;
 	try {
 		const User = await user.create({ name, email, username, password });
