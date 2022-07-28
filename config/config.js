@@ -1,8 +1,10 @@
-{
+require('dotenv').config()
+
+module.exports = {
   "development": {
-    "username": "shivaliksharma",
-    "password": "Spolust2016",
-    "database": "skibum",
+    "username": process.env.DEV_DATABASE_USERNAME,
+    "password": process.env.DEV_DATABASE_PASSWORD,
+    "database": process.env.DEV_DATABASE,
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
@@ -14,9 +16,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "use_env_variable": "DATABASE_URL",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
