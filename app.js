@@ -18,6 +18,6 @@ app.post('/api/users', async (req, res) => {
 
 app.listen({ port: 9000 }, async () => {
 	console.log('Server running on local host 9000');
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ alter: true });
     console.log('Database synced')
 });
