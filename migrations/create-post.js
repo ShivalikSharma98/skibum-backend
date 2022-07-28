@@ -1,0 +1,56 @@
+'use strict';
+module.exports = {
+	async up(queryInterface, DataTypes) {
+		await queryInterface.createTable('posts', {
+			id: {
+				allowNull: false,
+				autoIncrement: true,
+				primaryKey: true,
+				type: DataTypes.INTEGER,
+			},
+			title: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
+			date: {
+				type: DataTypes.DATEONLY,
+				allowNull: false,
+			},
+			start_location: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
+			end_location: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
+			directions: {
+				type: DataTypes.STRING(1500),
+				allowNull: false,
+			},
+			difficulty: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
+			description: {
+				type: DataTypes.STRING(1500),
+				allowNull: false,
+			},
+			image_url: {
+				type: DataTypes.STRING,
+				allowNull: true,
+			},
+			createdAt: {
+				allowNull: false,
+				type: DataTypes.DATE,
+			},
+			updatedAt: {
+				allowNull: false,
+				type: DataTypes.DATE,
+			},
+		});
+	},
+	async down(queryInterface, DataTypes) {
+		await queryInterface.dropTable('posts');
+	},
+};

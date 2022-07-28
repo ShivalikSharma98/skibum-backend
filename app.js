@@ -4,8 +4,9 @@ const { user } = require('./models/');
 const app = express();
 app.use(express.json());
 
-// create new users
-app.post('/api/users', async (req, res) => {
+// Create new users
+// POST (create) /api/user
+app.post('/api/user', async (req, res) => {
 	const { name, email, username, password } = req.body;
 	try {
 		const User = await user.create({ name, email, username, password });
@@ -16,8 +17,9 @@ app.post('/api/users', async (req, res) => {
 	}
 });
 
-// delete a users account
-app.delete('/api/users/:username', async (req, res) => {
+// Delete a users account
+// DELETE (delete) /api/user/:username
+app.delete('/api/user/:username', async (req, res) => {
 	try {
 		const User = await user.findOne({
 			where: { username: req.params.username },
@@ -29,6 +31,22 @@ app.delete('/api/users/:username', async (req, res) => {
 		return res.status(500).json(error);
 	}
 });
+
+// Show all posts
+// GET (show) /api/posts
+
+// Show all posts for a specific user
+// GET (show) /api/user/:username
+
+// Create a post for that user
+// POST (create) /api/user/:username/post/
+
+// Update a users post
+// PATCH (update) /api/user/:username/post/:id
+
+// Delete a users post
+// DELETE (delete) /api/users/:username/post/:id
+
 
 app.listen({ port: 9000 }, async () => {
 	console.log('Server running on local host 9000');
