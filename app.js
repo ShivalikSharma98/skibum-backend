@@ -36,6 +36,15 @@ app.delete('/api/user/:username', async (req, res) => {
 
 // Show all posts
 // GET (show) /api/posts
+app.get('/api/posts', async (req, res) => {
+	try {
+		const Posts = await post.findAll();
+		return res.json(Posts);
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
+	}
+});
 
 // Show all posts for a specific user
 // GET (show) /api/user/:username
@@ -71,6 +80,7 @@ app.post('/api/user/:username/post', async (req, res) => {
 		return res.status(500).json(error);
 	}
 });
+
 // Update a users post
 // PATCH (update) /api/user/:username/post/:id
 
