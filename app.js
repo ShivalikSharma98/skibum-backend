@@ -10,14 +10,28 @@ app.post('/api/users', async (req, res) => {
 	try {
 		const User = await user.create({ name, email, username, password });
 		return res.json(User);
-	} catch (err) {
-		console.log(err);
-		return res.status(500).json(err);
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
+	}
+});
+
+// delete a users account
+app.delete('/api/users/:username', async (req, res) => {
+	try {
+		const User = await user.findOne({
+			where: { username: req.params.username },
+		});
+		User.destroy();
+		return res.json(User);
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
 	}
 });
 
 app.listen({ port: 9000 }, async () => {
 	console.log('Server running on local host 9000');
-    await sequelize.sync({ alter: true });
-    console.log('Database synced')
+	await sequelize.authenticate();
+	console.log('Database Connected');
 });
