@@ -1,6 +1,6 @@
 const express = require('express');
-const { sequelize } = require('./models/index.js');
-const { user } = require('./models/user');
+const { sequelize } = require('./models/');
+const { user } = require('./models/');
 const app = express();
 app.use(express.json());
 
@@ -11,13 +11,13 @@ app.post('/api/users', async (req, res) => {
 		const User = await user.create({ name, email, username, password });
 		return res.json(User);
 	} catch (err) {
-		console.log(error);
-		return res.status(500).json(error);
+		console.log(err);
+		return res.status(500).json(err);
 	}
 });
 
 app.listen({ port: 9000 }, async () => {
 	console.log('Server running on local host 9000');
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ force: true });
     console.log('Database synced')
 });
