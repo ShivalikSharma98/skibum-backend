@@ -97,6 +97,17 @@ app.post('/api/user/:username/post', async (req, res) => {
 
 // Delete a users post
 // DELETE (delete) /api/users/:username/post/:id
+app.delete('/api/user/:username/post/:id', async (req, res) => {
+	try {
+		await post.destroy({
+			where: { username: req.params.username, id: req.params.id },
+		});
+		return res.status(200).end();
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
+	}
+});
 
 app.listen({ port: 9000 }, async () => {
 	console.log('Server running on local host 9000');
