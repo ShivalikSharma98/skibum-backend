@@ -94,6 +94,38 @@ app.post('/api/user/:username/post', async (req, res) => {
 
 // Update a users post
 // PATCH (update) /api/user/:username/post/:id
+app.patch('/api/user/:username/post/:id', async (req, res) => {
+	const {
+		title,
+		date,
+		start_location,
+		end_location,
+		directions,
+		difficulty,
+		description,
+		image_url,
+	} = req.body;
+	try {
+		const Post = await post.update(
+			{
+				username: req.params.username,
+				title,
+				date,
+				start_location,
+				end_location,
+				directions,
+				difficulty,
+				description,
+				image_url,
+			},
+			{ where: { username: req.params.username, id: req.params.id } }
+		);
+		return res.json(Post);
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
+	}
+});
 
 // Delete a users post
 // DELETE (delete) /api/users/:username/post/:id
