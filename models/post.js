@@ -9,12 +9,15 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate({ user }) {
 			// define association here
-
 			this.belongsTo(user, { foreignKey: 'username' });
 		}
 	}
 	post.init(
 		{
+			username: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
 			title: {
 				type: DataTypes.STRING,
 				allowNull: false,

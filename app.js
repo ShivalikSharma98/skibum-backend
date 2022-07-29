@@ -48,6 +48,17 @@ app.get('/api/posts', async (req, res) => {
 
 // Show all posts for a specific user
 // GET (show) /api/user/:username
+app.get('/api/user/:username', async (req, res) => {
+	try {
+		const Posts = await post.findAll({
+			where: { username: req.params.username },
+		});
+		return res.json(Posts);
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json(error);
+	}
+});
 
 // Create a post for that user
 // POST (create) /api/user/:username/post/
