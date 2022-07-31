@@ -16,10 +16,6 @@ module.exports = {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
-			date: {
-				type: DataTypes.DATEONLY,
-				allowNull: false,
-			},
 			start_location: {
 				type: DataTypes.STRING,
 				allowNull: false,
