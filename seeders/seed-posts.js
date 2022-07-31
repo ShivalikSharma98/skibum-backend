@@ -27,7 +27,7 @@ module.exports = {
 						'Drive Up I-40 and right before Winter Park you will see a US Forest Service hut and parking lot, this is the start location and where you will begin your ascend up to the peak of the Continental Divide Trail. The end location is farther down the road.',
 					difficulty: 'Hard',
 					description:
-						'Big mountain, long hike, and very steep terrain. This hike is no joke, however if you can make it through the deep snow it is well worth it. The back bowl of the ridge line faces north and gets very minimal direct sunlight throughout the year so the powder is deep and mostly untouched since because of the hike usually.',
+						'Big mountain, long hike, and very steep terrain. This hike is no joke, however if you can make it through the deep snow it is well worth it. The back bowl of the ridge line faces north and gets very minimal direct sunlight throughout the year so the powder is deep and mostly untouched because of the hike usually.',
 					image_url:
 						'https://www.uncovercolorado.com/wp-content/uploads/2020/05/Berthoud-Pass-CO-3.jpg',
 				},
@@ -62,7 +62,7 @@ module.exports = {
 						'Drive Up I-40 and right before Winter Park you will see a US Forest Service hut and parking lot, this is the start location and where you will begin your ascend up to the peak of the Continental Divide Trail. The end location is farther down the road.',
 					difficulty: 'Hard',
 					description:
-						'Big mountain, long hike, and very steep terrain. This hike is no joke, however if you can make it through the deep snow it is well worth it. The back bowl of the ridge line faces north and gets very minimal direct sunlight throughout the year so the powder is deep and mostly untouched since because of the hike usually.',
+						'Big mountain, long hike, and very steep terrain. This hike is no joke, however if you can make it through the deep snow it is well worth it. The back bowl of the ridge line faces north and gets very minimal direct sunlight throughout the year so the powder is deep and mostly untouched because of the hike usually.',
 					image_url:
 						'https://www.uncovercolorado.com/wp-content/uploads/2020/05/Berthoud-Pass-CO-3.jpg',
 				},
