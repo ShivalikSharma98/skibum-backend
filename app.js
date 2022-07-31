@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const { sequelize } = require('./models/');
 const { user, post } = require('./models/');
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Create new users
 // POST (create) /api/user
