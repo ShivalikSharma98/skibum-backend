@@ -25,12 +25,12 @@ module.exports = {
 				allowNull: false,
 			},
 			createdAt: {
-				allowNull: false,
 				type: DataTypes.DATE,
+				allowNull: false,
 			},
 			updatedAt: {
-				allowNull: false,
 				type: DataTypes.DATE,
+				allowNull: false,
 			},
 		});
 	},

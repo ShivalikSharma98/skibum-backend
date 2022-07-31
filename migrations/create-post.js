@@ -41,12 +41,12 @@ module.exports = {
 				allowNull: true,
 			},
 			createdAt: {
-				allowNull: false,
 				type: DataTypes.DATE,
+				allowNull: false,
 			},
 			updatedAt: {
-				allowNull: false,
 				type: DataTypes.DATE,
+				allowNull: false,
 			},
 		});
 	},
