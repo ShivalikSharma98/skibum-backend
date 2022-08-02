@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Create new users
+// Create new users ✅
 // POST (create) /api/user
 app.post('/api/user', async (req, res) => {
 	const { name, email, username, password } = req.body;
@@ -20,7 +20,7 @@ app.post('/api/user', async (req, res) => {
 	}
 });
 
-// Delete a users account and all posts
+// Delete a users account and all posts ✅
 // DELETE (delete) /api/user/:username
 app.delete('/api/user/:username', async (req, res) => {
 	try {
@@ -37,11 +37,11 @@ app.delete('/api/user/:username', async (req, res) => {
 	}
 });
 
-// Show all posts
+// Show all posts ✅
 // GET (show) /api/posts
 app.get('/api/posts', async (req, res) => {
 	try {
-		const Posts = await post.findAll();
+		const Posts = await post.findAll({ order: [['id', 'DESC']] });
 		return res.json(Posts);
 	} catch (error) {
 		console.log(error);
@@ -49,7 +49,7 @@ app.get('/api/posts', async (req, res) => {
 	}
 });
 
-// Show all posts for a specific user
+// Show all posts for a specific user ✅
 // GET (show) /api/user/:username
 app.get('/api/user/:username', async (req, res) => {
 	try {
@@ -63,10 +63,11 @@ app.get('/api/user/:username', async (req, res) => {
 	}
 });
 
-// Create a post for that user
-// POST (create) /api/user/:username/post/
-app.post('/api/user/:username/post', async (req, res) => {
+// Create a post
+// POST (create) /api/user/post/
+app.post('/api/user/post', async (req, res) => {
 	const {
+		username,
 		title,
 		date,
 		start_location,
@@ -78,7 +79,7 @@ app.post('/api/user/:username/post', async (req, res) => {
 	} = req.body;
 	try {
 		const Post = await post.create({
-			username: req.params.username,
+			username,
 			title,
 			date,
 			start_location,
@@ -95,7 +96,7 @@ app.post('/api/user/:username/post', async (req, res) => {
 	}
 });
 
-// Update a users post
+// Update a users post ✅
 // PATCH (update) /api/user/:username/post/:id
 app.patch('/api/user/:username/post/:id', async (req, res) => {
 	const {
@@ -130,7 +131,7 @@ app.patch('/api/user/:username/post/:id', async (req, res) => {
 	}
 });
 
-// Delete a users post
+// Delete a users post ✅
 // DELETE (delete) /api/users/:username/post/:id
 app.delete('/api/user/:username/post/:id', async (req, res) => {
 	try {
