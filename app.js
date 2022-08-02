@@ -6,6 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.set('port', process.env.PORT || 9000);
 
 // Create new users ✅
 // POST (create) /api/user
@@ -145,8 +146,7 @@ app.delete('/api/user/:username/post/:id', async (req, res) => {
 	}
 });
 
-app.listen({ port: 9000 }, async () => {
-	console.log('Server running on local host 9000');
+app.listen(app.get('port'), async () => {
 	await sequelize.authenticate();
 	console.log('Database Connected');
 });
