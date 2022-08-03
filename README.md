@@ -105,4 +105,7 @@ module.exports = (sequelize, DataTypes) => {
 	return post;
 };
 ```
-
+## Resources
+https://anjelicaa.medium.com/deploying-a-node-js-postgres-sequelize-app-to-heroku-da3dc9de07cd
+https://dev.to/nedsoft/getting-started-with-sequelize-and-postgres-emp
+https://www.bezkoder.com/react-node-express-postgresql/
