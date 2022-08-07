@@ -137,7 +137,7 @@ app.patch('/api/user/:username/post/:id', async (req, res) => {
 app.delete('/api/post/:id', async (req, res) => {
 	try {
 		await post.destroy({
-			where: { username: req.params.username, id: req.params.id },
+			where: { id: req.params.id },
 		});
 		return res.status(200).end();
 	} catch (error) {
