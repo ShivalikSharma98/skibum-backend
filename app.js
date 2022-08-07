@@ -64,7 +64,7 @@ app.get('/api/user/:username', async (req, res) => {
 	}
 });
 
-// Create a post
+// Create a post ✅
 // POST (create) /api/user/post/
 app.post('/api/user/post', async (req, res) => {
 	const {
@@ -134,7 +134,7 @@ app.patch('/api/user/:username/post/:id', async (req, res) => {
 
 // Delete a users post ✅
 // DELETE (delete) /api/users/:username/post/:id
-app.delete('/api/user/:username/post/:id', async (req, res) => {
+app.delete('/api/post/:id', async (req, res) => {
 	try {
 		await post.destroy({
 			where: { username: req.params.username, id: req.params.id },

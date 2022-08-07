@@ -42,11 +42,9 @@ module.exports = {
 			},
 			createdAt: {
 				type: DataTypes.DATE,
-				allowNull: true,
 			},
 			updatedAt: {
 				type: DataTypes.DATE,
-				allowNull: true,
 			},
 		});
 	},
